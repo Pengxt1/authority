@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.Menu">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="father" jdbcType="INTEGER" property="father" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="request_url" jdbcType="VARCHAR" property="requestUrl" />
+    <result column="identification" jdbcType="VARCHAR" property="identification" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="perms" jdbcType="VARCHAR" property="perms" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, father, order_num, type, request_url, identification, state, perms, icon
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.Menu">
+    insert into menu (id, name, father, 
+      order_num, type, request_url, 
+      identification, state, perms, 
+      icon)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{father,jdbcType=INTEGER}, 
+      #{orderNum,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{requestUrl,jdbcType=VARCHAR}, 
+      #{identification,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{perms,jdbcType=VARCHAR}, 
+      #{icon,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.Menu">
+    insert into menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="father != null">
+        father,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="requestUrl != null">
+        request_url,
+      </if>
+      <if test="identification != null">
+        identification,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="perms != null">
+        perms,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="father != null">
+        #{father,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="requestUrl != null">
+        #{requestUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null">
+        #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="perms != null">
+        #{perms,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.Menu">
+    update menu
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="father != null">
+        father = #{father,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="requestUrl != null">
+        request_url = #{requestUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null">
+        identification = #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="perms != null">
+        perms = #{perms,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.Menu">
+    update menu
+    set name = #{name,jdbcType=VARCHAR},
+      father = #{father,jdbcType=INTEGER},
+      order_num = #{orderNum,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR},
+      request_url = #{requestUrl,jdbcType=VARCHAR},
+      identification = #{identification,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      perms = #{perms,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
